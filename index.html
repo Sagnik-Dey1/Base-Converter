@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="download.jpeg" type="image/png">
+  <title>Number System Converter</title>
+  <style>
+    /* Basic styling for the body */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 10;
+      padding: 10;
+      background-color: #eadede;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    /* Styling for the converter container */
+    #converter {
+      background-color: #7ca71b;
+      padding: 90px;
+      border-radius: 8px;
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 1);
+    }
+
+    /* Styling for labels */
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #000000;
+      font-size: 20px; /* Adjust the value as needed */
+    }
+
+    /* Styling for input fields */
+    input {
+      width: 100%;
+      padding: 15px; /* Increase padding for better visibility */
+      margin-bottom: 20px;
+      box-sizing: border-box;
+      font-size: 16px; /* Adjust the value as needed */
+    }
+
+    /* Styling for the conversion type dropdowns */
+    select {
+      width: 100%;
+      padding: 15px; /* Increase padding for better visibility */
+      box-sizing: padding-box;
+      font-size: 16px; /* Adjust the value as needed */
+      margin-bottom: 20px;
+    }
+
+    /* Styling for the convert button */
+    button {
+      background-color: #333;
+      color: white;
+      padding: 18px 10px;
+      border-color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px; /* Add space above the button */
+      margin-right: 90px;  /*  Right-align the button */
+    }
+
+    /* Hover effect for the convert button */
+    button:hover {
+      background-color: #555;
+    }
+
+    /* Styling for the result display */
+    #result {
+      margin-top: 30px;
+      color: #333;
+      font-size: 18px;
+    }
+
+    /* Styling for social icons */
+    .social-icon {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Converter container -->
+  <div id="converter">
+    <!-- Number input field -->
+    <label for="numberInput">Enter a number :</label>
+    <input type="text" id="numberInput" placeholder="Enter a number" required>
+
+    <!-- Input number system dropdown -->
+    <label for="inputSystem">Select input number system:</label>
+    <select id="inputSystem">
+      <option value="binary">Binary</option>
+      <option value="octal">Octal</option>
+      <option value="decimal">Decimal</option>
+      <option value="hexadecimal">Hexadecimal</option>
+    </select>
+
+    <!-- Output number system dropdown -->
+    <label for="outputSystem">Select output number system:</label>
+    <select id="outputSystem">
+      <option value="binary">Binary</option>
+      <option value="octal">Octal</option>
+      <option value="decimal">Decimal</option>
+      <option value="hexadecimal">Hexadecimal</option>
+    </select>
+
+    <!-- Convert button -->
+    <button onclick="convertNumber()">Convert</button>
+
+    <!-- Result display -->
+    <div id="result"></div>
+
+    <!-- Line about the creator -->
+    <p style="text-align: center; margin-top: 20px; color: #fff;">ᴄʀᴇᴀᴛᴇᴅ ᴡɪᴛʜ ❤️<br> ʙʏ sᴀɢɴɪᴋ ᴅᴇʏ</p><br>
+
+    <!-- Socials -->
+    <div style="text-align: center; margin-top: 20px; color: #fff;">
+      <p>𝚏𝚘𝚕𝚕𝚘𝚠 𝚖𝚎 𝚘𝚗</p>
+      <a href="https://www.linkedin.com/in/saagniik/" target="_blank"><img class="social-icon" src="linkedin.png" alt="LinkedIn"></a>
+      <a href="https://www.instagram.com/sagnik.ai/" target="_blank"><img class="social-icon" src="instagram.png" alt="Instagram"></a>
+      <a href="https://www.youtube.com/@developersagnik" target="_blank"><img class="social-icon" src="youtube.png" alt="YouTube"></a>
+    </div>
+  </div>
+
+  <!-- JavaScript for number conversion -->
+  <script>
+    function convertNumber() {
+      // Get input values
+      var inputNumber = document.getElementById("numberInput").value;
+      var inputSystem = document.getElementById("inputSystem").value;
+      var outputSystem = document.getElementById("outputSystem").value;
+
+      var result;
+
+      // Convert input to decimal
+      var decimalNumber;
+      switch (inputSystem) {
+        case "binary":
+          decimalNumber = parseInt(inputNumber, 2);
+          break;
+        case "octal":
+          decimalNumber = parseInt(inputNumber, 8);
+          break;
+        case "decimal":
+          decimalNumber = parseInt(inputNumber, 10);
+          break;
+        case "hexadecimal":
+          decimalNumber = parseInt(inputNumber, 16);
+          break;
+        default:
+          result = "Invalid input number system";
+      }
+
+      // Convert decimal to output system
+      switch (outputSystem) {
+        case "binary":
+          result = decimalNumber.toString(2);
+          break;
+        case "octal":
+          result = decimalNumber.toString(8);
+          break;
+        case "decimal":
+          result = decimalNumber.toString(10);
+          break;
+        case "hexadecimal":
+          result = decimalNumber.toString(16);
+          break;
+        default:
+          result = "Invalid output number system";
+      }
+
+      // Display the result
+      document.getElementById("result").innerText = "Result: " + result;
+    }
+  </script>
+
+</body>
+</html>
